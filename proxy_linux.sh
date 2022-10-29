@@ -4,10 +4,12 @@
 
 # Script p/ habilitar o proxy p/ usar o apt:
 A="/etc/apt/apt.conf.d/00proxy"
+IP="10.3.4.147"
+URL="http://$IP:3128"
 
 echo "Acquire{" > $A
-echo "HTTP::proxy \"http://10.3.4.147:3128\";" >> $A
-echo "HTTPS::proxy \"http://10.3.4.147:3128\";" >> $A
-echo "FTP::proxy \"http://10.3.4.147:3128\";" >> $A
-echo "HTTP::proxy::10.3.4.147 \"DIRECT\";//se houver" >> $A
+echo "HTTP::proxy \"$URL\";" >> $A
+echo "HTTPS::proxy \"$URL\";" >> $A
+echo "FTP::proxy \"$URL\";" >> $A
+echo "HTTP::proxy::$IP \"DIRECT\";//se houver" >> $A
 echo "}" >> $A
